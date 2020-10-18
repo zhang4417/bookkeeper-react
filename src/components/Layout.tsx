@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Nav from "./Nav";
+import Nav from "components/Nav";
+
 
 const Wrapper = styled.div`
     height:100vh;
@@ -12,7 +13,7 @@ const Main = styled.main`
     flex-grow:1
 `
 
-function Layout(props:any) {
+function Layout(props: any) {
     return (
         <Wrapper>
             <Main>

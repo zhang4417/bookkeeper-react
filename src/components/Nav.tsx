@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-
+import icon from 'icons/money.svg'
 const NavWrapper = styled.nav`
     >ul{
         display:flex;
@@ -19,6 +19,7 @@ function Nav() {
         <NavWrapper>
             <ul>
                 <li>
+                    <img src={icon} alt="" />
                     <Link to="/tags">tags</Link>
                 </li>
                 <li>

@@ -4,10 +4,11 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Money from "./view/Money";
-import NoMatch from "./view/NoMatch";
-import Statistics from "./view/Statistics";
-import Tags from "./view/Tags";
+import Money from "view/Money";
+import NoMatch from "view/NoMatch";
+import Statistics from "view/Statistics";
+import Tags from "view/Tags";
+
 
 function App() {
   return (
