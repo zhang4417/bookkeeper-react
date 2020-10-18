@@ -1,12 +1,11 @@
 import React from "react";
-import Nav from "../components/Nav";
+import Layout from '../components/Layout';
 
 function Statistics() {
     return (
-        <>
+        <Layout>
             <h1>statistics</h1>
-            <Nav />
-        </>
+        </Layout>
     )
 }
 
