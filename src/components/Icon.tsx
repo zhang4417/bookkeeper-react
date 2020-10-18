@@ -1,8 +1,14 @@
 import React from 'react'
 import "style/icon.scss"
-require('icons/money.svg')
-require('icons/tag.svg')
-require('icons/statistics.svg')
+
+
+const importAll = (requireContext: __WebpackModuleApi.RequireContext) =>
+    requireContext.keys().forEach(requireContext);
+try {
+    importAll(require.context("icons", true, /\.svg$/));
+} catch (error) {
+    console.log(error);
+}
 
 function Icon(props: any) {
     return (

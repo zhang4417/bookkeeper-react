@@ -25,7 +25,7 @@ function App() {
             <Statistics />
           </Route>
           <Route exact path="/">
-            <Statistics />
+            <Money />
           </Route>
           <Route path="*">
             <NoMatch />
