@@ -11,48 +11,69 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/tags">
+            <Tags />
           </Route>
-          <Route path="/other">
-            <Other />
+          <Route path="/money">
+            <Money />
           </Route>
-          <Route path="/home">
-            <Home />
+          <Route path="/statistics">
+            <Statistics />
           </Route>
           <Route exact path="/">
-            <Home />
+            <Statistics />
           </Route>
           <Route path="*">
             <NoMatch />
           </Route>
         </Switch>
       </div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/about">about</Link>
-          </li>
-          <li>
-            <Link to="/other">other</Link>
-          </li>
-          <li>
-            <Link to="/home">home</Link>
-          </li>
-        </ul>
-      </nav>
     </Router>
   );
 }
+function Nav() {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/tags">tags</Link>
+          </li>
+          <li>
+            <Link to="/money">money</Link>
+          </li>
+          <li>
+            <Link to="/statistics">statistics</Link>
+          </li>
+        </ul>
+      </nav>
+    </>
+  )
+}
 
-function About() {
-  return (<h1>about</h1>)
+function Tags() {
+  return (
+    <>
+      <h1>tags</h1>
+      <Nav />
+    </>
+  )
 }
-function Other() {
-  return (<h1>other</h1>)
+function Money() {
+  return (
+    <>
+      <h1>money</h1>
+      <Nav />
+    </>
+  )
 }
-function Home() {
-  return (<h1>home</h1>)
+function Statistics() {
+  return (
+    <>
+      <h1>statistics</h1>
+      <Nav />
+    </>
+  )
 }
 function NoMatch() {
   return (<h1>404</h1>)
