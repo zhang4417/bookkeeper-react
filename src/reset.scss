@@ -1,9 +1,14 @@
 @import-normalize;
 
+@import "style/helper.scss";
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+*::after,*::before{
+    box-sizing:border-box
 }
 ol,ul{
     list-style: none;
@@ -11,5 +16,10 @@ ol,ul{
 a{
     text-decoration:none;
     color:inherit;
+}
+body{
+    font-size:16px;
+    line-height: 1.2;
+    font-family:$font-hei
 }
 

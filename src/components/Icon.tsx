@@ -9,8 +9,10 @@ try {
 } catch (error) {
     console.log(error);
 }
-
-function Icon(props: any) {
+type IconItem = {
+    name: string
+}
+function Icon(props: IconItem) {
     return (
         <svg className="icon">
             <use xlinkHref={'#' + props.name} />
