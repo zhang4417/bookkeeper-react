@@ -1,5 +1,5 @@
 import React from 'react'
-import "style/icon.scss"
+import styled from 'styled-components';
 
 
 const importAll = (requireContext: __WebpackModuleApi.RequireContext) =>
@@ -9,14 +9,19 @@ try {
 } catch (error) {
     console.log(error);
 }
+
+const Svg = styled.svg`
+    width:32px;
+    height:32px;
+`
 type IconItem = {
-    name: string
+    name: string,
 }
 function Icon(props: IconItem) {
     return (
-        <svg className="icon">
+        <Svg className="icon">
             <use xlinkHref={'#' + props.name} />
-        </svg>
+        </Svg>
     )
 }
 
