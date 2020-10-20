@@ -3,7 +3,7 @@ import Layout from "components/Layout";
 
 import { Switchboard } from "view/money/Switchboard";
 import { Output } from "view/money/Output";
-import { Tags } from "view/money/Tags";
+import { TagList } from "view/money/TagList";
 import { Note } from "view/money/Note";
 import { Pad } from "view/money/Pad";
 
@@ -12,7 +12,7 @@ function Money() {
         <Layout>
             <Switchboard />
             <Output />
-            <Tags />
+            <TagList />
             <Note />
             <Pad />
         </Layout>

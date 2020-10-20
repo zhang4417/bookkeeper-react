@@ -27,7 +27,7 @@ const Wrapper = styled.section`
     }
 `
 
-function Tags() {
+function TagList() {
     const [tag] = useState<string[]>(["交通", "住宿", "购物", "充值", "食物", "日用"])
     const [selectedTag, setSelectedTag] = useState<string[]>([])
     const addTag = (tag: string) => {
@@ -55,4 +55,4 @@ function Tags() {
     )
 }
 
-export { Tags }
+export { TagList }
