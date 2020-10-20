@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 const Wrapper = styled.section`
@@ -23,15 +23,22 @@ const Wrapper = styled.section`
         }
     }
 `
-function CashType() {
+function Switchboard() {
+    const [cash] = useState<CashItem[]>(["-", "+"])
+    const cashMap = { "-": "支出", "+": "收入" }
+    type CashItem = keyof (typeof cashMap)
+    const [select, setSelect] = useState<string>('-')
     return (
         <Wrapper>
             <ul>
-                <li className="selected">支出</li>
-                <li>收入</li>
+                {cash.map(c => {
+                    return (
+                        <li key={c} className={c === select ? "selected" : undefined} onClick={() => setSelect(c)}>{cashMap[c]}</li>
+                    )
+                })}
             </ul>
         </Wrapper>
     )
 }
 
-export { CashType }
+export { Switchboard }
