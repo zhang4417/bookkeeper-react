@@ -50,7 +50,6 @@ function Tags() {
                         </li>
                     )
                 })}
-
             </ul>
         </Wrapper>
     )
