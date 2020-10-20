@@ -33,6 +33,8 @@ const Output = styled.section`
     justify-content:center;
     align-items:center;
     font-size:24px;
+    box-shadow:
+        0 3px 3px rgb(225,225,225);
     >div{
         white-space:nowrap;
     }
@@ -73,12 +75,15 @@ const Notes = styled.section`
     display:flex;
     justify-content:center;
     align-items:center;
-    box-shadow:inset 0 -3px 3px rgb(225,225,225);
+    box-shadow:
+        0 3px 3px rgb(225,225,225),
+        0 -3px 3px rgb(225,225,225);
     >label{
         display:flex;
         justify-content:center;
         align-items:center;
             >span{
+                padding:0 3px;
                 white-space:nowrap;
                 color:#333
              }
@@ -86,6 +91,7 @@ const Notes = styled.section`
                 margin:0 5px;
                 border-right:1px solid black;
                 height:16px;
+                background:transparent;
              }
             >.note{
                 width:100%;
@@ -96,11 +102,18 @@ const Notes = styled.section`
     >.date{
         margin-left:16px;
         border:none;
+        text-align:right;
+        direction:rtl;
+        background:transparent;
     }
 `
-const Pad = styled.section`
-padding:8px 0;
+const Pad = styled.div`
+    margin:8px 0;
+    box-shadow:
+        0 3px 3px rgb(225,225,225),
+        0 -3px 3px rgb(225,225,225);
     >button{
+        font-size:16px;
         float:left;
         width:25%;
         height:56px;
@@ -110,13 +123,15 @@ padding:8px 0;
             float:right;
             height:112px;
         }
-        &.point{
+        &.zero{
             width:50%;
         }
     }
 `
 
 function Money() {
+    const now: string = new Date().toISOString().replace(/T.*/i, '');
+
     return (
         <Layout>
             <CashFlow>
@@ -127,7 +142,7 @@ function Money() {
             </CashFlow>
             <Output>
                 <div>工资</div>
-                <input value="123" />
+                <input defaultValue="123" />
             </Output>
             <Tags>
                 <ul>
@@ -157,7 +172,7 @@ function Money() {
                     <div></div>
                     <input placeholder="请在这里输入备注" className="note" />
                 </label>
-                <input type="date" className="date" />
+                <input type="date" defaultValue={now} className="date" />
             </Notes>
             <Pad>
                 <button>1</button>
@@ -172,8 +187,8 @@ function Money() {
                 <button>8</button>
                 <button>9</button>
                 <button className="ok">OK</button>
-                <button className="point">.</button>
-                <button>0</button>
+                <button className="zero">0</button>
+                <button>.</button>
             </Pad>
         </Layout>
     )
