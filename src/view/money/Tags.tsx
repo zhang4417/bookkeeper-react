@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
@@ -19,32 +19,38 @@ const Wrapper = styled.section`
             display:flex;
             justify-content:center;
             align-items:center;
+            &.selected{
+                background:#f60;
+                color:white;
+            }
         }
     }
 `
 
 function Tags() {
+    const [tag] = useState<string[]>(["交通", "住宿", "购物", "充值", "食物", "日用"])
+    const [selectedTag, setSelectedTag] = useState<string[]>([])
+    const addTag = (tag: string) => {
+        const index = selectedTag.indexOf(tag)
+        if (index >= 0) {
+            selectedTag.splice(index, 1)
+            setSelectedTag([...selectedTag])
+        } else {
+            selectedTag.push(tag)
+            setSelectedTag([...selectedTag])
+        }
+    }
     return (
         <Wrapper>
             <ul>
-                <li>
-                    "衣"
-                    </li>
-                <li>
-                    "食"
-                    </li>
-                <li>
-                    "住"
-                    </li>
-                <li>
-                    "行"
-                    </li>
-                <li>
-                    "玩"
-                    </li>
-                <li>
-                    "睡"
-                    </li>
+                {tag.map(t => {
+                    return (
+                        <li key={t} onClick={() => addTag(t)} className={selectedTag.indexOf(t) >= 0 ? "selected" : undefined}>
+                            {t}
+                        </li>
+                    )
+                })}
+
             </ul>
         </Wrapper>
     )
