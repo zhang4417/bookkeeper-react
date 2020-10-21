@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -22,17 +22,50 @@ const Wrapper = styled.div`
         }
     }
 `
+
 function Pad() {
+    const [output, setOutput] = useState('0')
+    const printCash = (e: React.MouseEvent) => {
+        const text = (e.target as HTMLButtonElement).textContent
+        if (text === null) { return }
+        if (text === "C") {
+            setOutput("0")
+        }
+        if (text === "x") {
+            if (output.length === 1) {
+                setOutput("0")
+            } else {
+                const str = output.slice(0, -1)
+                setOutput(str)
+            }
+        }
+        if (text === "OK") {
+            Number.parseFloat(output)
+        }
+        if (output.length >= 16) { return }
+        if ("0123456789".indexOf(text) >= 0) {
+            if (output === '0') {
+                setOutput(text)
+            } else {
+                setOutput(output + text)
+            }
+        }
+        if (text === "." && output.indexOf('.') < 0) {
+            setOutput(output + text)
+        }
+
+    }
     return (
-        <Wrapper>
+        <Wrapper onClick={printCash}>
+            <div>{output}</div>
             <button>1</button>
             <button>2</button>
             <button>3</button>
-            <button>C</button>
+            <button>x</button>
             <button>4</button>
             <button>5</button>
             <button>6</button>
-            <button>←</button>
+            <button>C</button>
             <button>7</button>
             <button>8</button>
             <button>9</button>
