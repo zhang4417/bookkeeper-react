@@ -26,13 +26,14 @@ box-shadow:
 }
 `
 type Props = {
-    print: string
+    print: string,
+    tag: string[]
 }
 
 function Output(props: Props) {
     return (
         <Wrapper>
-            <div>工资</div>
+            <div>{props.tag[0]}</div>
             <input value={props.print} disabled />
         </Wrapper>
     )

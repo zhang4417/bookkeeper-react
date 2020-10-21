@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { tagContext } from "context";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
@@ -29,17 +30,20 @@ const Wrapper = styled.section`
 
 function TagList() {
     const [tag] = useState<string[]>(["交通", "住宿", "购物", "充值", "食物", "日用"])
-    const [selectedTag, setSelectedTag] = useState<string[]>([])
+    const [selectedTag, setSelectedTag] = useState<string[]>([tag[0]])
+
+    const { setPadTag } = useContext(tagContext)
+
     const addTag = (tag: string) => {
         const index = selectedTag.indexOf(tag)
-        if (index >= 0) {
-            selectedTag.splice(index, 1)
-            setSelectedTag([...selectedTag])
-        } else {
-            selectedTag.push(tag)
+        if (index < 0) {
+            selectedTag.splice(0, 1, tag)
             setSelectedTag([...selectedTag])
         }
     }
+    useEffect(() => {
+        setPadTag!(selectedTag)
+    }, [selectedTag])
     return (
         <Wrapper>
             <ul>

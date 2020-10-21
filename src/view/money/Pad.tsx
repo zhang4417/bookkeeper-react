@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
 function Pad() {
     const [output, setOutput] = useState<string>('0')
-    const { print, setPrint } = useContext(printContext)
+    const { setPrint } = useContext(printContext)
     const printCash = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) { return }
@@ -55,10 +55,10 @@ function Pad() {
         if (text === "." && output.indexOf('.') < 0) {
             setOutput(output + text)
         }
-
     }
     useEffect(() => {
         setPrint!(output)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [output])
     return (
         <Wrapper onClick={printCash}>

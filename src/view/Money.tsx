@@ -6,19 +6,21 @@ import { Output } from "view/money/Output";
 import { TagList } from "view/money/TagList";
 import { Note } from "view/money/Note";
 import { Pad } from "view/money/Pad";
-import { printContext } from "context";
+import { printContext, tagContext } from "context";
 
 function Money() {
     const [print, setPrint] = useState<string>('0')
-    console.log(print)
+    const [padTag, setPadTag] = useState([''])
     return (
         <Layout>
             <printContext.Provider value={{ print, setPrint }}>
-                <Switchboard />
-                <Output print={print} />
-                <TagList />
-                <Note />
-                <Pad />
+                <tagContext.Provider value={{ padTag, setPadTag }}>
+                    <Switchboard />
+                    <Output print={print} tag={padTag} />
+                    <TagList />
+                    <Note />
+                    <Pad />
+                </tagContext.Provider>
             </printContext.Provider>
         </Layout>
     )
