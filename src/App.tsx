@@ -2,7 +2,8 @@ import React from "react";
 import {
   HashRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import Money from "view/Money";
 import NoMatch from "view/NoMatch";
@@ -24,9 +25,7 @@ function App() {
           <Route path="/statistics">
             <Statistics />
           </Route>
-          <Route exact path="/">
-            <Money />
-          </Route>
+          <Redirect from='/' to='/money' />
           <Route path="*">
             <NoMatch />
           </Route>
