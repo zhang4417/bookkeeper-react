@@ -62,7 +62,6 @@ function Pad() {
     }, [output])
     return (
         <Wrapper onClick={printCash}>
-            <div>{output}</div>
             <button>1</button>
             <button>2</button>
             <button>3</button>

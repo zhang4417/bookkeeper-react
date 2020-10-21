@@ -50,7 +50,6 @@ function Note() {
             setNote(noteRef.current.value)
         }
     }
-    console.log(dates)
     return (
         <Wrapper>
             <label>

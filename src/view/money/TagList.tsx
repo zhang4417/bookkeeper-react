@@ -43,6 +43,7 @@ function TagList() {
     }
     useEffect(() => {
         setPadTag!(selectedTag)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedTag])
     return (
         <Wrapper>
