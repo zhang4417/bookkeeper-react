@@ -25,12 +25,15 @@ box-shadow:
     font-size:inherit;
 }
 `
+type Props = {
+    print: string
+}
 
-function Output() {
+function Output(props: Props) {
     return (
         <Wrapper>
             <div>工资</div>
-            <input defaultValue="123" />
+            <input value={props.print} disabled />
         </Wrapper>
     )
 }

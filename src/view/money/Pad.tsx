@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { printContext } from "context";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -24,7 +25,8 @@ const Wrapper = styled.div`
 `
 
 function Pad() {
-    const [output, setOutput] = useState('0')
+    const [output, setOutput] = useState<string>('0')
+    const { print, setPrint } = useContext(printContext)
     const printCash = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) { return }
@@ -55,6 +57,9 @@ function Pad() {
         }
 
     }
+    useEffect(() => {
+        setPrint!(output)
+    }, [output])
     return (
         <Wrapper onClick={printCash}>
             <div>{output}</div>
