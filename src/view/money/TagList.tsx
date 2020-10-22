@@ -1,4 +1,4 @@
-import { tagContext } from "context";
+import { printContext } from "context";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -32,7 +32,7 @@ function TagList() {
     const [tag] = useState<string[]>(["交通", "住宿", "购物", "充值", "食物", "日用"])
     const [selectedTag, setSelectedTag] = useState<string[]>([tag[0]])
 
-    const { setPadTag } = useContext(tagContext)
+    const { setPadTag } = useContext(printContext)
 
     const addTag = (tag: string) => {
         const index = selectedTag.indexOf(tag)
