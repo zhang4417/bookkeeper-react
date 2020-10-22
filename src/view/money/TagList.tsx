@@ -10,10 +10,11 @@ const Wrapper = styled.section`
     >ul{
         display:flex;
         flex-wrap:wrap;
-        justify-content:space-between;
+        justify-content:flex-start;
         >li{
             margin-top:8px;
             margin-bottom:8px;
+            margin-left:2%;
             background:#eee;
             border-radius:16px;
             width:18%;
@@ -62,8 +63,13 @@ function TagList() {
                             <Icon name={t.icon} />
                             <span>{t.name}</span>
                         </li>
+
                     )
                 })}
+                <li>
+                    <Icon name="xinzeng" />
+                    <span>新增</span>
+                </li>
             </ul>
         </Wrapper>
     )

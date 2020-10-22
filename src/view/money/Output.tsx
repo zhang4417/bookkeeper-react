@@ -1,3 +1,4 @@
+import Icon from "components/Icon";
 import React from "react";
 import styled from "styled-components";
 
@@ -14,6 +15,10 @@ box-shadow:
     0 3px 3px rgb(225,225,225);
 >div{
     white-space:nowrap;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    >span{padding: 0 10px;}
 }
 >input{
     width:100%;
@@ -33,7 +38,10 @@ type Props = {
 function Output(props: Props) {
     return (
         <Wrapper>
-            <div>{props.tag.name}</div>
+            <div>
+                <Icon name={props.tag.icon} />
+                <span>{props.tag.name}</span>
+            </div>
             <input value={props.print} disabled />
         </Wrapper>
     )
