@@ -11,9 +11,12 @@ import { printContext } from "context";
 function Money() {
     const [print, setPrint] = useState<string>('0')
     const [padTag, setPadTag] = useState({ name: "交通", icon: "jiaotong" })
+    const [types, setTypes] = useState('-')
+    const [noteDate, setNoteDate] = useState({ note: "", date: "" })
+
     return (
         <Layout>
-            <printContext.Provider value={{ print, setPrint, padTag, setPadTag }}>
+            <printContext.Provider value={{ print, setPrint, padTag, setPadTag, types, setTypes, noteDate, setNoteDate }}>
                 <Switchboard />
                 <Output print={print} tag={padTag} />
                 <TagList />

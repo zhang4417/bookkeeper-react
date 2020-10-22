@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
 function Pad() {
     const [output, setOutput] = useState<string>('0')
-    const { setPrint } = useContext(printContext)
+    const { setPrint, print, padTag, types, noteDate } = useContext(printContext)
     const printCash = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) { return }
@@ -43,6 +43,7 @@ function Pad() {
         }
         if (text === "OK") {
             Number.parseFloat(output)
+            console.log({ print, padTag, types, noteDate })
         }
         if (output.length >= 16) { return }
         if ("0123456789".indexOf(text) >= 0) {

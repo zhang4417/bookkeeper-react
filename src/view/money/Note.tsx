@@ -1,27 +1,28 @@
-import React, { useRef, useState } from "react";
+import { printContext } from "context";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
     padding:3px 0;
     margin:8px 16px;
     display:flex;
-    justify-content:center;
     align-items:center;
     box-shadow:
         0 3px 3px rgb(225,225,225),
         0 -3px 3px rgb(225,225,225);
     >label{
+        flex-grow:1;
         display:flex;
         justify-content:center;
         align-items:center;
             >span{
                 padding:0 3px;
                 white-space:nowrap;
-                color:#333
+                color:#757575
              }
              >div{
                 margin:0 5px;
-                border-right:1px solid black;
+                border-right:1px solid #757575;
                 height:16px;
                 background:transparent;
              }
@@ -45,11 +46,16 @@ function Note() {
     const [note, setNote] = useState<string>('')
     const [dates, setDates] = useState(now)
     const noteRef = useRef<HTMLInputElement>(null)
+    const { setNoteDate } = useContext(printContext)
     const changeNote = () => {
         if (noteRef.current !== null) {
             setNote(noteRef.current.value)
         }
     }
+    useEffect(() => {
+        setNoteDate!({ note, date: dates })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [note, dates])
     return (
         <Wrapper>
             <label>
