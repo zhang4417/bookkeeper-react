@@ -10,7 +10,7 @@ import { printContext } from "context";
 
 function Money() {
     const [print, setPrint] = useState<string>('0')
-    const [padTag, setPadTag] = useState<string[]>([''])
+    const [padTag, setPadTag] = useState({ name: "交通", icon: "jiaotong" })
     return (
         <Layout>
             <printContext.Provider value={{ print, setPrint, padTag, setPadTag }}>

@@ -27,13 +27,13 @@ box-shadow:
 `
 type Props = {
     print: string,
-    tag: string[]
+    tag: { name: string, icon: string }
 }
 
 function Output(props: Props) {
     return (
         <Wrapper>
-            <div>{props.tag[0]}</div>
+            <div>{props.tag.name}</div>
             <input value={props.print} disabled />
         </Wrapper>
     )
