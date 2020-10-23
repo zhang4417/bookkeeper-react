@@ -1,5 +1,6 @@
 import Icon from "components/Icon";
 import { printContext } from "context";
+import { useTags } from "hooks/useTags";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -40,7 +41,7 @@ type TagList = {
 }
 
 function TagList() {
-    const [tag] = useState<TagList[]>([{ name: "交通", icon: "jiaotong" }, { name: "住宿", icon: "zhusu" }, { name: "购物", icon: "gouwu" }, { name: "充值", icon: "chongzhi" }, { name: "聚餐", icon: "jucan" }, { name: "日用", icon: "riyong" }])
+    const { tag, setTag } = useTags()
     const [selectedTag, setSelectedTag] = useState<TagList>(tag[0])
 
     const { setPadTag } = useContext(printContext)
