@@ -1,5 +1,5 @@
 import Icon from "components/Icon";
-import { printContext } from "context";
+import { printContext } from "helper/context";
 import { useTags } from "hooks/useTags";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";

@@ -1,4 +1,4 @@
-import { printContext } from "context"
+import { printContext } from "helper/context"
 import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 
@@ -29,11 +29,11 @@ function Switchboard() {
     const cashMap = { "-": "支出", "+": "收入" }
     type CashItem = keyof (typeof cashMap)
     const [select, setSelect] = useState<string>('-')
-    const {setTypes}=useContext(printContext)
-    useEffect(()=>{
+    const { setTypes } = useContext(printContext)
+    useEffect(() => {
         setTypes!(select)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[select])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [select])
     return (
         <Wrapper>
             <ul>

@@ -6,7 +6,7 @@ import { Output } from "view/money/Output";
 import { TagList } from "view/money/TagList";
 import { Note } from "view/money/Note";
 import { Pad } from "view/money/Pad";
-import { printContext } from "context";
+import { printContext } from "helper/context";
 
 function Money() {
     const [print, setPrint] = useState<string>('0')
