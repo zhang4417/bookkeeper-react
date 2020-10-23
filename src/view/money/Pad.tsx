@@ -8,7 +8,7 @@ const Wrapper = styled.div`
         0 3px 3px rgb(225,225,225),
         0 -3px 3px rgb(225,225,225);
     >button{
-        font-size:16px;
+        font-size:18px;
         float:left;
         width:25%;
         height:56px;
@@ -30,10 +30,10 @@ function Pad() {
     const printCash = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) { return }
-        if (text === "C") {
+        if (text === "c") {
             setOutput("0")
         }
-        if (text === "x") {
+        if (text === "×") {
             if (output.length === 1) {
                 setOutput("0")
             } else {
@@ -66,11 +66,11 @@ function Pad() {
             <button>1</button>
             <button>2</button>
             <button>3</button>
-            <button>x</button>
+            <button>×</button>
             <button>4</button>
             <button>5</button>
             <button>6</button>
-            <button>C</button>
+            <button>c</button>
             <button>7</button>
             <button>8</button>
             <button>9</button>
