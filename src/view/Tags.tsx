@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from 'components/Layout';
 import { useTags } from "hooks/useTags";
 import styled from "styled-components";
@@ -22,7 +22,7 @@ const Wrapper = styled.ul`
     }
 `
 function Tags() {
-    const { tag, setTag } = useTags()
+    const { tag } = useTags()
     console.log(tag)
     return (
         <Layout>

@@ -1,7 +1,7 @@
 import Icon from "components/Icon"
 import { useTags } from "hooks/useTags"
-import React, { useEffect, useRef } from "react"
-import { Link, NavLink, useHistory, useParams } from "react-router-dom"
+import React, { useRef } from "react"
+import { useHistory, useParams } from "react-router-dom"
 import styled from "styled-components"
 
 
@@ -58,7 +58,7 @@ type TagList = {
 function EditTag() {
     const { id } = useParams<Params>()
     const history = useHistory()
-    const { tag, setTag, findTag, changeTag, deleteTag } = useTags()
+    const { findTag, changeTag, deleteTag } = useTags()
     const _id = parseInt(id)
     const navTag = findTag(_id)
     const inputRef = useRef<HTMLInputElement>(null)
