@@ -1,7 +1,7 @@
 import Icon from "components/Icon"
 import { useTags } from "hooks/useTags"
 import React, { useEffect, useRef } from "react"
-import { Link, NavLink, useParams } from "react-router-dom"
+import { Link, NavLink, useHistory, useParams } from "react-router-dom"
 import styled from "styled-components"
 
 
@@ -17,14 +17,11 @@ const Wrapper = styled.div`
             display:flex;
             align-items: center;
             line-height:32px;
-            >a{
-                display:flex;
-                align-items: center;
                 >svg{
                     width:1.5em;
                     height:1.5em;
                     fill:#f60;
-                }
+            
             }
         }    
     }
@@ -59,26 +56,31 @@ type TagList = {
     id: number, name: string, icon: string
 }
 function EditTag() {
-    let { id } = useParams<Params>()
+    const { id } = useParams<Params>()
+    const history = useHistory()
     const { tag, setTag, findTag, changeTag, deleteTag } = useTags()
-    const navTag = findTag(parseInt(id))
+    const _id = parseInt(id)
+    const navTag = findTag(_id)
     const inputRef = useRef<HTMLInputElement>(null)
     const onChangeTag = () => {
-        changeTag(parseInt(id), inputRef.current!.value)
+        const value = inputRef.current!.value
+        if (value !== "") {
+            changeTag(_id, value)
+            history.goBack()
+        }
+    }
+    const onReturn = () => {
+        history.goBack()
     }
     return (
         <Wrapper>
             <ul>
-                <li>
-                    <NavLink to="/tags">
-                        <Icon name="left" />
-                    </NavLink>
+                <li onClick={onReturn}>
+                    <Icon name="left" />
                 </li>
                 <li>编辑标签</li>
-                <li >
-                    <Link to="/tags" onClick={onChangeTag}>
-                        <Icon name="confirm" />
-                    </Link>
+                <li onClick={onChangeTag}>
+                    <Icon name="confirm" />
                 </li>
             </ul>
             <label>
@@ -86,7 +88,7 @@ function EditTag() {
                 <input defaultValue={navTag.name} ref={inputRef} />
             </label>
             <div >
-                <button>删除标签</button>
+                <button onClick={() => { deleteTag(_id) }}>删除标签</button>
             </div>
         </Wrapper>
     )
