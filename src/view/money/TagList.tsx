@@ -2,6 +2,7 @@ import Icon from "components/Icon";
 import { printContext } from "helper/context";
 import { useTags } from "hooks/useTags";
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
@@ -33,6 +34,12 @@ const Wrapper = styled.section`
                 color:white;
                 >svg{fill:white;}
             }
+            &.addTag{
+                >a{
+                    display:flex;
+                    flex-direction:column;
+                }
+            }
         }
     }
 `
@@ -46,7 +53,7 @@ function TagList() {
 
     const { setPadTag } = useContext(printContext)
 
-    const addTag = (tag: TagList) => {
+    const choiceTag = (tag: TagList) => {
         if (selectedTag.name !== tag.name) {
             setSelectedTag({ ...tag })
         }
@@ -60,16 +67,18 @@ function TagList() {
             <ul>
                 {tag.map(t => {
                     return (
-                        <li key={t.name} onClick={() => addTag(t)} className={selectedTag.name === t.name ? "selected" : undefined}>
+                        <li key={t.name} onClick={() => choiceTag(t)} className={selectedTag.name === t.name ? "selected" : undefined}>
                             <Icon name={t.icon} />
                             <span>{t.name}</span>
                         </li>
 
                     )
                 })}
-                <li>
-                    <Icon name="xinzeng" />
-                    <span>新增</span>
+                <li className="addTag">
+                    <Link to="/money/createTag">
+                        <Icon name="xinzeng" />
+                        <span>新增</span>
+                    </Link>
                 </li>
             </ul>
         </Wrapper>
