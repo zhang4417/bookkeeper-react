@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from 'components/Layout';
 import { useTags } from "hooks/useTags";
 import styled from "styled-components";
@@ -23,14 +23,15 @@ const Wrapper = styled.ul`
 `
 function Tags() {
     const { tag, setTag } = useTags()
+    console.log(tag)
     return (
         <Layout>
             <Wrapper>
                 {tag.map((t) => {
                     return (
-                        <li key={t.name}>
-                            <Link to={"/tags/" + t.name}>
-                                {t.name}
+                        <li key={t.id}>
+                            <Link to={"/tags/" + t.id}>
+                                {t.id}{t.name}
                                 <Icon name="right" />
                             </Link>
                         </li>)

@@ -1,7 +1,7 @@
-let id:number
-function createId(){
-    id+=1
+let id: number = 0
+function createId() {
+    id += 1
     return id
 }
 
-export {createId}
+export { createId }

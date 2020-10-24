@@ -1,6 +1,7 @@
 import Icon from "components/Icon"
-import React from "react"
-import { Link } from "react-router-dom"
+import { useTags } from "hooks/useTags"
+import React, { useEffect, useRef } from "react"
+import { Link, NavLink, useParams } from "react-router-dom"
 import styled from "styled-components"
 
 
@@ -51,28 +52,40 @@ const Wrapper = styled.div`
         }
     }
 `
-
+type Params = {
+    id: string
+}
+type TagList = {
+    id: number, name: string, icon: string
+}
 function EditTag() {
+    let { id } = useParams<Params>()
+    const { tag, setTag, findTag, changeTag, deleteTag } = useTags()
+    const navTag = findTag(parseInt(id))
+    const inputRef = useRef<HTMLInputElement>(null)
+    const onChangeTag = () => {
+        changeTag(parseInt(id), inputRef.current!.value)
+    }
     return (
         <Wrapper>
             <ul>
                 <li>
-                    <Link to="/tags">
+                    <NavLink to="/tags">
                         <Icon name="left" />
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>编辑标签</li>
-                <li>
-                    <Link to="/tags">
+                <li >
+                    <Link to="/tags" onClick={onChangeTag}>
                         <Icon name="confirm" />
                     </Link>
                 </li>
             </ul>
             <label>
                 <span>标签</span>
-                <input></input>
+                <input defaultValue={navTag.name} ref={inputRef} />
             </label>
-            <div>
+            <div >
                 <button>删除标签</button>
             </div>
         </Wrapper>
