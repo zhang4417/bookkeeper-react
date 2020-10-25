@@ -48,7 +48,7 @@ type TagList = {
 }
 
 function TagList() {
-    const { tag, setTag } = useTags()
+    const { tag } = useTags()
     const [selectedTag, setSelectedTag] = useState<TagList>(tag[0])
 
     const { setPadTag } = useContext(printContext)
@@ -71,7 +71,6 @@ function TagList() {
                             <Icon name={t.icon} />
                             <span>{t.name}</span>
                         </li>
-
                     )
                 })}
                 <li className="addTag">
