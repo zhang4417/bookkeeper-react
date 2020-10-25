@@ -1,5 +1,4 @@
 import TagNav from "components/TagNav"
-import { createId } from "helper/createId"
 import { useTags } from "hooks/useTags"
 import React from "react"
 import { useHistory } from "react-router-dom"
@@ -18,7 +17,7 @@ function CreateTag() {
     return (
         <div>
             <TagNav title="新增标签" fn1={onReturn} fn2={onCommit}>
-                <button>haha</button>
+                <div>icon</div>
             </TagNav>
         </div>
     )

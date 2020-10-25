@@ -5,7 +5,7 @@ type TagList = {
     id: number, name: string, icon: string
 }
 const tags = [
-    { id: createId(), name: "交通", icon: "jiaotong" }, { id: createId(), name: "住宿", icon: "zhusu" }, { id: createId(), name: "购物", icon: "gouwu" }, { id: createId(), name: "充值", icon: "chongzhi" }, { id: createId(), name: "聚餐", icon: "jucan" }, { id: createId(), name: "日用", icon: "riyong" }
+    { id: 1, name: "交通", icon: "jiaotong" }, { id: 2, name: "住宿", icon: "zhusu" }, { id: 3, name: "购物", icon: "gouwu" }, { id: 4, name: "充值", icon: "chongzhi" }, { id: 5, name: "聚餐", icon: "jucan" }, { id: 6, name: "日用", icon: "riyong" }
 ]
 function useTags() {
     const getTags = JSON.parse(localStorage.getItem("tags") || JSON.stringify(tags))
