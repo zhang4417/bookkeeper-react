@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-type Record = {
+export type Record = {
     type: string,
     note: string,
     date: string,
@@ -10,7 +10,6 @@ type Record = {
 function useRecord() {
     const getRecord = JSON.parse(localStorage.getItem("_record") || "[]")
     const [record, setRecord] = useState<Record[]>(getRecord)
-    console.log(record)
     const localSave = (record: Record[]) => localStorage.setItem('_record', JSON.stringify(record))
     const addRecord = (obj: Record) => {
         let newRecord = [...record, obj]
