@@ -1,5 +1,4 @@
-import { printContext } from "helper/context"
-import React, { useContext, useEffect, useState } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 const Wrapper = styled.section`
@@ -26,22 +25,20 @@ const Wrapper = styled.section`
         }
     }
 `
-function Switchboard() {
+type Props = {
+    cashType: "-" | "+",
+    onChange: (selectedType: "-" | "+") => void
+}
+const Header: React.FC<Props> = (props) => {
     const [cash] = useState<CashItem[]>(["-", "+"])
     const cashMap = { "-": "支出", "+": "收入" }
     type CashItem = keyof (typeof cashMap)
-    const [select, setSelect] = useState<string>('-')
-    const { setTypes } = useContext(printContext)
-    useEffect(() => {
-        setTypes!(select)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [select])
     return (
         <Wrapper>
             <ul>
                 {cash.map(c => {
                     return (
-                        <li key={c} className={c === select ? "selected" : undefined} onClick={() => setSelect(c)}>{cashMap[c]}</li>
+                        <li key={c} className={c === props.cashType ? "selected" : undefined} onClick={() => props.onChange(c)}>{cashMap[c]}</li>
                     )
                 })}
             </ul>
@@ -49,4 +46,4 @@ function Switchboard() {
     )
 }
 
-export { Switchboard }
+export { Header }
