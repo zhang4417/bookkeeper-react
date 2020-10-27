@@ -5,11 +5,13 @@ import { Header } from "components/Header";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+overflow-y:auto;
+>section{
     display:flex;
     flex-direction:column;
     >div{
         margin:0 16px;
-        background:#a0a0a0;
+        background:#F60;
     }
     >ul{
         background:#eee;
@@ -36,7 +38,7 @@ const Wrapper = styled.div`
             }
         }
     }
-
+}
 
 `
 type Item = { [K: string]: Record[] }
@@ -57,26 +59,28 @@ function Statistics() {
     return (
         <Layout>
             <Header cashType={selectedType} onChange={(t) => { setSelectedType(t) }} />
-            {sortRecord.map(s => {
-                return (
-                    <Wrapper key={Math.random()}>
-                        <div>{s[0]}</div>
-                        {s[1].map(r => {
-                            return (
-                                <ul key={Math.random()}>
-                                    <li>
-                                        {r.tag.name}
-                                    </li><li className="note">
-                                        {r.note}
-                                    </li><li>
-                                        ¥{r.count}
-                                    </li>
-                                </ul>
-                            )
-                        })}
-                    </Wrapper>
-                )
-            })}
+            <Wrapper>
+                {sortRecord.map(s => {
+                    return (
+                        <section key={Math.random()}>
+                            <div>{s[0]}</div>
+                            {s[1].map(r => {
+                                return (
+                                    <ul key={Math.random()}>
+                                        <li>
+                                            {r.tag.name}
+                                        </li><li className="note">
+                                            {r.note}
+                                        </li><li>
+                                            ¥{r.count}
+                                        </li>
+                                    </ul>
+                                )
+                            })}
+                        </section>
+                    )
+                })}
+            </Wrapper>
 
         </Layout>
     )

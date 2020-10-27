@@ -28,8 +28,8 @@ const Wrapper = styled.div`
     >label{
         display:flex;
         align-items:center;
-        margin:32px 0px;
-        padding:5px;
+        margin:16px 0px;
+        padding:16px 5px;
         >input{
             margin-left:5px;
             flex-grow:1;
@@ -40,6 +40,7 @@ const Wrapper = styled.div`
     >div{
         display:flex;
         justify-content: center;
+        margin:16px 0;
         >button{
             outline:none;
             background:#f60;
@@ -63,14 +64,19 @@ function EditTag() {
     const navTag = findTag(_id)
     const inputRef = useRef<HTMLInputElement>(null)
     const onChangeTag = () => {
-        const value = inputRef.current!.value
-        if (value !== "") {
-            changeTag(_id, value)
-            history.goBack()
+        if (navTag) {
+            const value = inputRef.current!.value
+            if (value !== "") {
+                changeTag(_id, value)
+                history.goBack()
+            }
         }
     }
     const onReturn = () => {
         history.goBack()
+    }
+    const onDeleteTag = () => {
+        deleteTag(_id)
     }
     return (
         <Wrapper>
@@ -83,13 +89,20 @@ function EditTag() {
                     <Icon name="confirm" />
                 </li>
             </ul>
-            <label>
-                <span>标签</span>
-                <input defaultValue={navTag.name} ref={inputRef} />
-            </label>
-            <div >
-                <button onClick={() => { deleteTag(_id) }}>删除标签</button>
-            </div>
+            {navTag ? (
+                <>
+                    <label>
+                        <span>标签</span>
+                        <input defaultValue={navTag.name} ref={inputRef} />
+                    </label>
+                    <div >
+                        <button onClick={onDeleteTag}>删除标签</button>
+                    </div>
+                </>
+            ) : (
+                    <div>标签删除成功</div>
+                )
+            }
         </Wrapper>
     )
 }

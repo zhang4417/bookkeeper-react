@@ -44,7 +44,7 @@ const Wrapper = styled.section`
     }
 `
 type TagList = {
-    name: string, icon: string
+    id: number, name: string, icon: string
 }
 
 function TagList() {
@@ -54,7 +54,7 @@ function TagList() {
     const { setPadTag } = useContext(printContext)
 
     const choiceTag = (tag: TagList) => {
-        if (selectedTag.name !== tag.name) {
+        if (selectedTag.id !== tag.id) {
             setSelectedTag({ ...tag })
         }
     }
@@ -67,7 +67,7 @@ function TagList() {
             <ul>
                 {tag.map(t => {
                     return (
-                        <li key={t.name} onClick={() => choiceTag(t)} className={selectedTag.name === t.name ? "selected" : undefined}>
+                        <li key={t.id} onClick={() => choiceTag(t)} className={selectedTag.id === t.id ? "selected" : undefined}>
                             <Icon name={t.icon} />
                             <span>{t.name}</span>
                         </li>

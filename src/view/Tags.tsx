@@ -6,6 +6,7 @@ import Icon from "components/Icon";
 import { Link } from "react-router-dom";
 
 const Wrapper = styled.ul`
+    overflow-y:inherit;
     >li{
         margin:0 5px;
         border-bottom:1px solid #eee;
