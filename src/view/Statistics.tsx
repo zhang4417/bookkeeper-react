@@ -6,12 +6,16 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 overflow-y:auto;
+margin-top:8px;
 >section{
     display:flex;
     flex-direction:column;
     >div{
         margin:0 16px;
+        padding:5px;
+        color:white;
         background:#F60;
+        border-radius:5px 5px 0 0;
     }
     >ul{
         background:#eee;

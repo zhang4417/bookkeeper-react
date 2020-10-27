@@ -2,6 +2,7 @@ import { printContext } from "helper/context"
 import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 
+
 const Wrapper = styled.section`
     >ul{
         display:flex;
@@ -12,6 +13,7 @@ const Wrapper = styled.section`
             padding:5px 0;
             margin:3px 8px;
             position:relative;
+
             &.selected{
                 &::after{
                     position:absolute;

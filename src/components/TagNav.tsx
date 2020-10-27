@@ -60,7 +60,8 @@ function TagNav(props: any) {
             </ul>
             <label>
                 <span>标签</span>
-                <input ref={inputRef} />
+                <input type="text"
+                    ref={inputRef} maxLength={4} />
             </label>
             {props.children}
         </Wrapper>

@@ -13,11 +13,19 @@ const Wrapper = styled.ul`
         >a{
             height:48px;
             display:flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items:center;
             >svg{
                 height:1.3em;
                 width:1.3em;
+                &:nth-child(1){
+
+                    margin-left:8px;
+                }
+                &:nth-child(2){
+                    margin-left:auto;
+                    fill:#f60;
+                }
             }
         }
     }
@@ -32,7 +40,8 @@ function Tags() {
                     return (
                         <li key={t.id}>
                             <Link to={"/tags/" + t.id}>
-                                {t.id}{t.name}
+                                {t.name}
+                                <Icon name={t.icon} />
                                 <Icon name="right" />
                             </Link>
                         </li>)

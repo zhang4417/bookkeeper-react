@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Wrapper = styled.section`
     padding:3px 0;
     margin:8px 16px;
+    height:32px;
     display:flex;
     align-items:center;
     box-shadow:
@@ -28,7 +29,7 @@ const Wrapper = styled.section`
              }
             >.note{
                 width:100%;
-                height:32px;
+
                 border:none;
             }
     }
