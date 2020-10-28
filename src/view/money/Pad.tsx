@@ -16,9 +16,16 @@ const Wrapper = styled.div`
         height:56px;
         border:none;
         outline:none;
+        border:.5px solid #ebe9e9;
+        @media(min-width:500px){
+            height:48px;
+        }
         &.ok{
             float:right;
             height:112px;
+            @media(min-width:500px){
+                height:96px;
+            }
         }
         &.zero{
             width:50%;

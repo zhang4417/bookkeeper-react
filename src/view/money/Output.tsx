@@ -3,11 +3,12 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-margin-top:8px;
-margin-bottom:8px;
-margin-left:16px;
-margin-right:16px;
+margin:8px 16px;
 padding:8px 16px;
+@media(min-width:500px){
+    padding:0px 16px;
+    margin:5px 16px;
+}
 display:flex;
 background:#f60;
 border-radius:16px;

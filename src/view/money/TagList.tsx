@@ -11,6 +11,9 @@ const Wrapper = styled.section`
     overflow-x:hidden;
     margin:0 16px;
     padding:8px 0;
+    &::-webkit-scrollbar{
+        display:none;
+    }
     >ul{
         display:flex;
         flex-wrap:wrap;
@@ -18,6 +21,10 @@ const Wrapper = styled.section`
         >li{
             margin-top:8px;
             margin-bottom:8px;
+            @media(min-width:500px){
+                margin-top:3px;
+                margin-bottom:3px;
+            }
             width:56px;
             display:flex;
             flex-direction:column;

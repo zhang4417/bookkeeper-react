@@ -5,6 +5,9 @@ import styled from "styled-components";
 const Wrapper = styled.section`
     padding:3px 0;
     margin:8px 16px;
+    @media(min-width:500px){
+        margin:3px 16px;
+    }
     height:32px;
     display:flex;
     align-items:center;

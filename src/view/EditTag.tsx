@@ -9,6 +9,7 @@ const Wrapper = styled.div`
     height:100vh;
     display:flex;
     flex-direction:column;
+    background:white;
     >ul{
         display:flex;
         justify-content: space-between;

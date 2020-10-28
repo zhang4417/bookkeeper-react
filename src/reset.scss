@@ -10,6 +10,9 @@
 *::after,*::before{
     box-sizing:border-box
 }
+*::-webkit-scrollbar{
+    display:none;
+}
 ol,ul{
     list-style: none;
 }
@@ -20,7 +23,15 @@ a{
 body{
     font-size:16px;
     line-height: 1.2;
-    font-family:$font-hei
+    font-family:$font-hei;
+
+}
+@media(min-width:500px){
+    body{
+        width:400px;
+        margin:auto;
+        background: #918f8f;
+    }
 }
 input{
     outline:none;

@@ -7,6 +7,7 @@ import styled from "styled-components"
 
 const Wrapper = styled.div`
     margin:8px 16px;
+    background:white;
     >ul{
         display:flex;
         flex-wrap:wrap;
