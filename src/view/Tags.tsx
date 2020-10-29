@@ -32,7 +32,6 @@ const Wrapper = styled.ul`
 `
 function Tags() {
     const { tag } = useTags()
-    console.log(tag)
     return (
         <Layout>
             <Wrapper>

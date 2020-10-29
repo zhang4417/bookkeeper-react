@@ -66,7 +66,7 @@ function TagNav(props: any) {
             </ul>
             <label>
                 <span>标签</span>
-                <input type="text"
+                <input type="text" placeholder="请输入1-4个字符"
                     ref={inputRef} maxLength={4} />
             </label>
             {props.children}

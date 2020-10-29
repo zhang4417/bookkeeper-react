@@ -1,5 +1,6 @@
 import Icon from "components/Icon"
 import { useTags } from "hooks/useTags"
+import { useToast } from "hooks/useToast"
 import React, { useRef } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import styled from "styled-components"
@@ -64,10 +65,13 @@ function EditTag() {
     const _id = parseInt(id)
     const navTag = findTag(_id)
     const inputRef = useRef<HTMLInputElement>(null)
+    const { addToast } = useToast()
     const onChangeTag = () => {
         if (navTag) {
             const value = inputRef.current!.value
-            if (value !== "") {
+            if (value === "") {
+                addToast("标签名不能为空", 2000)
+            } else {
                 changeTag(_id, value)
                 history.goBack()
             }
@@ -94,7 +98,7 @@ function EditTag() {
                 <>
                     <label>
                         <span>标签</span>
-                        <input defaultValue={navTag.name} ref={inputRef} />
+                        <input defaultValue={navTag.name} ref={inputRef} maxLength={4} />
                     </label>
                     <div >
                         <button onClick={onDeleteTag}>删除标签</button>
