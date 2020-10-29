@@ -5,7 +5,8 @@ export type Record = {
     note: string,
     date: string,
     tag: { name: string, icon: string },
-    count: number
+    amount: number,
+    id: number
 }
 function useRecord() {
     const getRecord = JSON.parse(localStorage.getItem("_record") || "[]")
@@ -16,6 +17,11 @@ function useRecord() {
         setRecord(newRecord)
         localSave(newRecord)
     }
-    return { record, setRecord, addRecord }
+    const deleteRecord = (id: number) => {
+        const newRecord = record.filter(r => r.id !== id)
+        setRecord(newRecord)
+        localSave(newRecord)
+    }
+    return { record, setRecord, addRecord, deleteRecord }
 }
 export { useRecord }

@@ -1,5 +1,7 @@
 import { printContext } from "helper/context";
 import { useRecord } from "hooks/useRecord";
+import { useToast } from "hooks/useToast";
+
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -30,6 +32,9 @@ const Wrapper = styled.div`
         &.zero{
             width:50%;
         }
+        &.active{
+            background:red;
+        }
     }
 `
 
@@ -37,6 +42,7 @@ function Pad() {
     const [output, setOutput] = useState<string>('0')
     const { setPrint, print, padTag, types, noteDate } = useContext(printContext)
     const { addRecord } = useRecord()
+    const { addToast } = useToast()
     const printCash = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) { return }
@@ -52,7 +58,8 @@ function Pad() {
             }
         }
         if (text === "OK") {
-            addRecord({ count: parseFloat(print!), tag: padTag!, type: types!, note: noteDate!.note, date: noteDate!.date })
+            addRecord({ amount: parseFloat(print!), tag: padTag!, type: types!, note: noteDate!.note, date: noteDate!.date, id: Math.random() });
+            addToast("添加成功", 2000)
         }
         if (output.length >= 16) { return }
         if ("0123456789".indexOf(text) >= 0) {

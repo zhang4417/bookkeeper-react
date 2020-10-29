@@ -1,4 +1,5 @@
 import Icon from "components/Icon"
+import { useToast } from "hooks/useToast"
 import React, { useRef } from "react"
 import styled from "styled-components"
 
@@ -39,9 +40,13 @@ const Wrapper = styled.div`
 
 function TagNav(props: any) {
     const inputRef = useRef<HTMLInputElement>(null)
+    const { addToast } = useToast()
     const onCommit = () => {
         const value = inputRef.current!.value
-        if (value !== "") {
+        if (value === "") {
+            addToast("标签名不能为空", 2000)
+        } else {
+            addToast("添加成功", 2000)
             props.fn2(value)
         }
     }

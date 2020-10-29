@@ -3,6 +3,8 @@ import Layout from 'components/Layout';
 import { useRecord, Record } from "hooks/useRecord";
 import { Header } from "components/Header";
 import styled from "styled-components";
+import Icon from "components/Icon";
+
 
 const Wrapper = styled.div`
 overflow-y:auto;
@@ -24,9 +26,25 @@ margin-top:8px;
         border-radius:5px;
         display:flex;
         &:nth-child(2){
-        border-top-left-radius:0px;
-        border-top-right-radius:0px;
-    }
+            border-top-left-radius:0px;
+            border-top-right-radius:0px;
+        }
+        &.show{
+            position:relative;
+            box-shadow:inset 0 -3px 3px #f5b992;
+            >div{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                position:absolute;
+                height:16px;
+                width:16px;
+                border-radius:8px;
+                background:transparent;
+                top:0;
+                right:0px;
+            }
+        }
         >li{
             padding:8px 5px;
             line-height:32px;
@@ -41,13 +59,16 @@ margin-top:8px;
                 color:#a0a0a0;
             }
         }
+        >div{
+            display:none;
+        }
     }
 }
 
 `
 type Item = { [K: string]: Record[] }
 function Statistics() {
-    const { record } = useRecord()
+    const { record, deleteRecord } = useRecord()
     const [selectedType, setSelectedType] = useState<"-" | "+">('-')
     const selectedRecord = record.filter(r => r.type === selectedType)
     const hash: Item = {}
@@ -57,27 +78,29 @@ function Statistics() {
         return hash
     })
     const sortRecord = Object.entries(hash).sort((a, b) => a[0] < b[0] ? 1 : -1)
-    console.log('hash')
-    console.log(sortRecord)
 
+    const [choiceRecord, setChoiceRecord] = useState(0)
     return (
         <Layout>
             <Header cashType={selectedType} onChange={(t) => { setSelectedType(t) }} />
             <Wrapper>
                 {sortRecord.map(s => {
                     return (
-                        <section key={Math.random()}>
+                        <section key={s[0]}>
                             <div>{s[0]}</div>
                             {s[1].map(r => {
                                 return (
-                                    <ul key={Math.random()}>
+                                    <ul key={r.id} onClick={() => setChoiceRecord(r.id)} className={choiceRecord === r.id ? "show" : ""}>
                                         <li>
                                             {r.tag.name}
                                         </li><li className="note">
                                             {r.note}
                                         </li><li>
-                                            ¥{r.count}
+                                            ¥{r.amount}
                                         </li>
+                                        <div onClick={() => deleteRecord(r.id)}>
+                                            <Icon name="delete" />
+                                        </div>
                                     </ul>
                                 )
                             })}
@@ -85,8 +108,7 @@ function Statistics() {
                     )
                 })}
             </Wrapper>
-
-        </Layout>
+        </Layout >
     )
 }
 
