@@ -5,7 +5,6 @@ import { useToast } from "hooks/useToast";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
-
 const Wrapper = styled.div`
     margin:8px 0;
     box-shadow:
@@ -19,6 +18,21 @@ const Wrapper = styled.div`
         border:none;
         outline:none;
         border:.5px solid #ebe9e9;
+        &:active{
+            position:relative;
+            &::after{
+                position:absolute;
+                width:48px;
+                height:32px;
+                content:"";
+                left:50%;
+                top:50%;
+                transform:translate(-50%,-50%);
+                border-radius:16px;
+                background:rgba(143,143,143,.3)
+            }
+
+        }
         @media(min-width:500px){
             height:48px;
         }
@@ -32,20 +46,19 @@ const Wrapper = styled.div`
         &.zero{
             width:50%;
         }
-        &.active{
-            background:red;
-        }
     }
 `
 
 function Pad() {
     const [output, setOutput] = useState<string>('0')
+    const [active, setActive] = useState('')
     const { setPrint, print, padTag, types, noteDate } = useContext(printContext)
     const { addRecord } = useRecord()
     const { addToast } = useToast()
     const printCash = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) { return }
+        setActive(text)
         if (text === "c") {
             setOutput("0")
         }
